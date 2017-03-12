@@ -1,0 +1,13 @@
+[package]
+authors = ["Jorge Aparicio <japaricious@gmail.com>"]
+description = "Peripheral access API for STM32F30X microcontrollers"
+documentation = "https://docs.rs/stm32f30x"
+keywords = ["no-std", "arm", "cortex-m", "stm32"]
+license = "MIT OR Apache-2.0"
+name = "stm32f30x"
+repository = "https://github.com/japaric/stm32f30x"
+version = "0.1.0"
+
+[dependencies]
+cortex-m = "0.2.0"
+vcell = "0.1.0"
