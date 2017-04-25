@@ -5,6 +5,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [v0.4.0] - 2017-04-25
+
+### Changed
+
+- [breaking-change] Re-generated using svd2rust v0.7.0. NVIC and FPU API
+  changed.
+
+### Added
+
+- API for the rest of the core peripherals. This API is just a re-export of the
+  cortex-m one.
+
 ## [v0.3.2] - 2017-04-23
 
 ### Added
@@ -38,7 +50,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Initial release
 
-[Unreleased]: https://github.com/japaric/stm32f30x/compare/v0.3.2...HEAD
+[Unreleased]: https://github.com/japaric/stm32f30x/compare/v0.4.0...HEAD
+[v0.4.0]: https://github.com/japaric/stm32f30x/compare/v0.3.2...v0.4.0
 [v0.3.2]: https://github.com/japaric/stm32f30x/compare/v0.3.1...v0.3.2
 [v0.3.1]: https://github.com/japaric/stm32f30x/compare/v0.3.0...v0.3.1
 [v0.3.0]: https://github.com/japaric/stm32f30x/compare/v0.2.0...v0.3.0
