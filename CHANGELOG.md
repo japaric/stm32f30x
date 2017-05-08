@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [v0.4.1] - 2017-05-08
+
+- Re-generate usign svd2rust v0.7.2
+
 ## [v0.4.0] - 2017-04-25
 
 ### Changed
