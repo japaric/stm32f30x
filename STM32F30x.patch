@@ -1,5 +1,5 @@
 --- a/STM32F30x.svd	2018-01-07 20:36:58.550586777 +0100
-+++ b/STM32F30x.svd	2018-01-08 01:24:48.987115787 +0100
++++ b/STM32F30x.svd	2018-01-10 01:20:54.350228005 +0100
 @@ -3,6 +3,16 @@
  xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
  xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
@@ -2740,7 +2740,7 @@
              </field>
              <field>
                <name>WWDGEN</name>
-@@ -5208,48 +7024,64 @@
+@@ -5208,48 +7024,72 @@
                enable</description>
                <bitOffset>11</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2768,6 +2768,14 @@
                <description>USART 2 clock enable</description>
                <bitOffset>17</bitOffset>
                <bitWidth>1</bitWidth>
++              <enumeratedValues derivedFrom="AHBENR.DMAEN.ENABLED">
++              </enumeratedValues>
++            </field>
++            <field>
++              <name>USART3EN</name>
++              <description>USART 3 clock enable</description>
++              <bitOffset>18</bitOffset>
++              <bitWidth>1</bitWidth>
 +              <enumeratedValues derivedFrom="AHBENR.DMAEN.ENABLED">
 +              </enumeratedValues>
              </field>
@@ -2805,7 +2813,7 @@
              </field>
              <field>
                <name>PWREN</name>
-@@ -5257,12 +7089,16 @@
+@@ -5257,12 +7097,16 @@
                enable</description>
                <bitOffset>28</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2822,7 +2830,7 @@
              </field>
            </fields>
          </register>
-@@ -11005,7 +12841,7 @@
+@@ -11005,7 +12849,7 @@
            <addressOffset>0x4</addressOffset>
            <size>0x20</size>
            <access>read-write</access>
@@ -2831,7 +2839,7 @@
            <fields>
              <field>
                <name>RXDMAEN</name>
-@@ -11309,7 +13145,7 @@
+@@ -11309,7 +13153,7 @@
            <addressOffset>0x20</addressOffset>
            <size>0x20</size>
            <access>read-write</access>
@@ -2840,7 +2848,7 @@
            <fields>
              <field>
                <name>MCKOE</name>
-@@ -30535,6 +32371,18 @@
+@@ -30535,6 +32379,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2859,7 +2867,7 @@
              </field>
              <field>
                <name>UDIS</name>
-@@ -30553,6 +32401,18 @@
+@@ -30553,6 +32409,18 @@
                <description>One-pulse mode</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2878,7 +2886,7 @@
              </field>
              <field>
                <name>ARPE</name>
-@@ -30622,6 +32482,27 @@
+@@ -30622,6 +32490,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2906,7 +2914,7 @@
              </field>
            </fields>
          </register>
-@@ -30680,6 +32561,12 @@
+@@ -30680,6 +32569,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2919,7 +2927,7 @@
              </field>
            </fields>
          </register>
-@@ -30697,6 +32584,12 @@
+@@ -30697,6 +32592,12 @@
                <description>Low Auto-reload value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
