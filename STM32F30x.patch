@@ -1,5 +1,5 @@
 --- a/STM32F30x.svd	2018-01-07 20:36:58.550586777 +0100
-+++ b/STM32F30x.svd	2018-01-10 01:20:54.350228005 +0100
++++ b/STM32F30x.svd	2018-01-12 20:56:37.215662499 +0100
 @@ -3,6 +3,16 @@
  xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
  xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
@@ -2830,7 +2830,20 @@
              </field>
            </fields>
          </register>
-@@ -11005,7 +12849,7 @@
+@@ -10838,6 +12682,12 @@
+               <description>Transmit data value</description>
+               <bitOffset>0</bitOffset>
+               <bitWidth>9</bitWidth>
++              <writeConstraint>
++                <range>
++                  <minimum>0</minimum>
++                  <maximum>511</maximum>
++                </range>
++              </writeConstraint>
+             </field>
+           </fields>
+         </register>
+@@ -11005,7 +12855,7 @@
            <addressOffset>0x4</addressOffset>
            <size>0x20</size>
            <access>read-write</access>
@@ -2839,7 +2852,7 @@
            <fields>
              <field>
                <name>RXDMAEN</name>
-@@ -11309,7 +13153,7 @@
+@@ -11309,7 +13159,7 @@
            <addressOffset>0x20</addressOffset>
            <size>0x20</size>
            <access>read-write</access>
@@ -2848,7 +2861,7 @@
            <fields>
              <field>
                <name>MCKOE</name>
-@@ -30535,6 +32379,18 @@
+@@ -30535,6 +32385,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2867,7 +2880,7 @@
              </field>
              <field>
                <name>UDIS</name>
-@@ -30553,6 +32409,18 @@
+@@ -30553,6 +32415,18 @@
                <description>One-pulse mode</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2886,7 +2899,7 @@
              </field>
              <field>
                <name>ARPE</name>
-@@ -30622,6 +32490,27 @@
+@@ -30622,6 +32496,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2914,7 +2927,7 @@
              </field>
            </fields>
          </register>
-@@ -30680,6 +32569,12 @@
+@@ -30680,6 +32575,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2927,7 +2940,7 @@
              </field>
            </fields>
          </register>
-@@ -30697,6 +32592,12 @@
+@@ -30697,6 +32598,12 @@
                <description>Low Auto-reload value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
