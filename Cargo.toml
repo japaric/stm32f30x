@@ -11,7 +11,7 @@ version = "0.6.0"
 
 [dependencies]
 bare-metal = "0.1.0"
-cortex-m = { git = "https://github.com/japaric/cortex-m" }
+cortex-m = "0.4.0"
 vcell = "0.1.0"
 
 [dependencies.cortex-m-rt]
