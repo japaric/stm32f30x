@@ -5,6 +5,21 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [v0.6.0] - 2018-01-15
+
+### Changed
+
+- [breaking-change] Re-generated using svd2rust v0.12.0
+- writes to some USART and I2C registers are now safe
+
+### Added
+
+- A USART3EN field to RCC.APB1ENR
+
+### Fixed
+
+- The reset value of some GPIO and SPI registers.
+
 ## [v0.5.1] - 2017-08-01
 
 ### Changed
@@ -68,7 +83,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Initial release
 
-[Unreleased]: https://github.com/japaric/stm32f30x/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/japaric/stm32f30x/compare/v0.6.0...HEAD
+[v0.6.0]: https://github.com/japaric/stm32f30x/compare/v0.5.1...v0.6.0
 [v0.5.1]: https://github.com/japaric/stm32f30x/compare/v0.5.0...v0.5.1
 [v0.5.0]: https://github.com/japaric/stm32f30x/compare/v0.4.1...v0.5.0
 [v0.4.1]: https://github.com/japaric/stm32f30x/compare/v0.4.0...v0.4.1
