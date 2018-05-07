@@ -361,7 +361,7 @@ pub struct _NBYTESW<'a> {
 impl<'a> _NBYTESW<'a> {
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         const MASK: u8 = 255;
         const OFFSET: u8 = 16;
         self.w.bits &= !((MASK as u32) << OFFSET);
@@ -514,7 +514,7 @@ pub struct _SADD8W<'a> {
 impl<'a> _SADD8W<'a> {
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         const MASK: u8 = 3;
         const OFFSET: u8 = 8;
         self.w.bits &= !((MASK as u32) << OFFSET);
@@ -529,7 +529,7 @@ pub struct _SADD1W<'a> {
 impl<'a> _SADD1W<'a> {
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         const MASK: u8 = 127;
         const OFFSET: u8 = 1;
         self.w.bits &= !((MASK as u32) << OFFSET);

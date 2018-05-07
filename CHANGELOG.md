@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [v0.6.2] - 2018-05-07
+
+### Changed
+
+- Made some bitfields in I2C registers safe to write to (using `<WriteConstraint>`)
+
 ## [v0.6.1] - 2018-05-06
 
 ### Changed

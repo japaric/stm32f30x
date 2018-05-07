@@ -60,7 +60,7 @@ pub struct _TXDATAW<'a> {
 impl<'a> _TXDATAW<'a> {
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         const MASK: u8 = 255;
         const OFFSET: u8 = 0;
         self.w.bits &= !((MASK as u32) << OFFSET);

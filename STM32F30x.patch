@@ -1,5 +1,5 @@
---- a/STM32F30x.svd	2018-01-07 20:36:58.550586777 +0100
-+++ b/STM32F30x.svd	2018-01-12 20:56:37.215662499 +0100
+--- a/STM32F30x.svd	2018-05-07 15:18:41.694913230 +0200
++++ b/STM32F30x.svd	2018-05-07 15:18:38.281559224 +0200
 @@ -3,6 +3,16 @@
  xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
  xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
@@ -2861,7 +2861,59 @@
            <fields>
              <field>
                <name>MCKOE</name>
-@@ -30535,6 +32385,18 @@
+@@ -28249,6 +30099,12 @@
+               <description>Number of bytes</description>
+               <bitOffset>16</bitOffset>
+               <bitWidth>8</bitWidth>
++              <writeConstraint>
++                <range>
++                  <minimum>0</minimum>
++                  <maximum>255</maximum>
++                </range>
++              </writeConstraint>
+             </field>
+             <field>
+               <name>NACK</name>
+@@ -28297,6 +30153,12 @@
+               mode)</description>
+               <bitOffset>8</bitOffset>
+               <bitWidth>2</bitWidth>
++              <writeConstraint>
++                <range>
++                  <minimum>0</minimum>
++                  <maximum>3</maximum>
++                </range>
++              </writeConstraint>
+             </field>
+             <field>
+               <name>SADD1</name>
+@@ -28304,6 +30166,12 @@
+               mode)</description>
+               <bitOffset>1</bitOffset>
+               <bitWidth>7</bitWidth>
++              <writeConstraint>
++                <range>
++                  <minimum>0</minimum>
++                  <maximum>127</maximum>
++                </range>
++              </writeConstraint>
+             </field>
+             <field>
+               <name>SADD0</name>
+@@ -28726,6 +30594,12 @@
+               <description>8-bit transmit data</description>
+               <bitOffset>0</bitOffset>
+               <bitWidth>8</bitWidth>
++              <writeConstraint>
++                <range>
++                  <minimum>0</minimum>
++                  <maximum>255</maximum>
++                </range>
++              </writeConstraint>
+             </field>
+           </fields>
+         </register>
+@@ -30535,6 +32409,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2880,7 +2932,7 @@
              </field>
              <field>
                <name>UDIS</name>
-@@ -30553,6 +32415,18 @@
+@@ -30553,6 +32439,18 @@
                <description>One-pulse mode</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2899,7 +2951,7 @@
              </field>
              <field>
                <name>ARPE</name>
-@@ -30622,6 +32496,27 @@
+@@ -30622,6 +32520,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2927,7 +2979,7 @@
              </field>
            </fields>
          </register>
-@@ -30680,6 +32575,12 @@
+@@ -30680,6 +32599,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2940,7 +2992,7 @@
              </field>
            </fields>
          </register>
-@@ -30697,6 +32598,12 @@
+@@ -30697,6 +32622,12 @@
                <description>Low Auto-reload value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
