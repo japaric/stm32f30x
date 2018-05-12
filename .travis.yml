@@ -3,18 +3,29 @@ language: rust
 matrix:
   include:
     - env: TARGET=x86_64-unknown-linux-gnu
-      rust: nightly
       addons:
         apt:
           packages:
             - dos2unix
+
+    - env: TARGET=thumbv7em-none-eabi
+      rust: beta
+      addons:
+        apt:
+          packages:
+            - gcc-arm-none-eabi
+
     - env: TARGET=thumbv7em-none-eabihf
-      rust: nightly
+      rust: beta
+      addons:
+        apt:
+          packages:
+            - gcc-arm-none-eabi
 
 before_install: set -e
 
 install:
-  - sh ci/install.sh
+  - bash ci/install.sh
 
 script:
   - bash ci/script.sh
