@@ -1,36 +1,474 @@
-#![cfg_attr(feature = "rt", feature(global_asm))]
-#![cfg_attr(feature = "rt", feature(use_extern_macros))]
-#![cfg_attr(feature = "rt", feature(used))]
-#![doc = "Peripheral access API for STM32F30X microcontrollers (generated using svd2rust v0.12.1)\n\nYou can find an overview of the API [here].\n\n[here]: https://docs.rs/svd2rust/0.12.1/svd2rust/#peripheral-api"]
-#![allow(private_no_mangle_statics)]
+#![doc = "Peripheral access API for STM32F30X microcontrollers (generated using svd2rust v0.13.0)\n\nYou can find an overview of the API [here].\n\n[here]: https://docs.rs/svd2rust/0.13.0/svd2rust/#peripheral-api"]
 #![deny(missing_docs)]
 #![deny(warnings)]
 #![allow(non_camel_case_types)]
-#![feature(const_fn)]
-#![feature(try_from)]
 #![no_std]
+extern crate bare_metal;
 extern crate cortex_m;
 #[cfg(feature = "rt")]
 extern crate cortex_m_rt;
-#[cfg(feature = "rt")]
-pub use cortex_m_rt::{default_handler, exception};
-extern crate bare_metal;
 extern crate vcell;
 use core::marker::PhantomData;
 use core::ops::Deref;
 #[doc = r" Number available in the NVIC for configuring priority"]
 pub const NVIC_PRIO_BITS: u8 = 4;
-pub use interrupt::Interrupt;
+#[cfg(feature = "rt")]
+extern "C" {
+    fn WWDG();
+    fn PVD();
+    fn TAMP_STAMP();
+    fn RTC_WKUP();
+    fn FLASH();
+    fn RCC();
+    fn EXTI0();
+    fn EXTI1();
+    fn EXTI2_TSC();
+    fn EXTI3();
+    fn EXTI4();
+    fn DMA1_CH1();
+    fn DMA1_CH2();
+    fn DMA1_CH3();
+    fn DMA1_CH4();
+    fn DMA1_CH5();
+    fn DMA1_CH6();
+    fn DMA1_CH7();
+    fn ADC1_2();
+    fn USB_HP_CAN_TX();
+    fn USB_LP_CAN_RX0();
+    fn CAN_RX1();
+    fn CAN_SCE();
+    fn EXTI9_5();
+    fn TIM1_BRK_TIM15();
+    fn TIM1_UP_TIM16();
+    fn TIM1_TRG_COM_TIM17();
+    fn TIM1_CC();
+    fn TIM2();
+    fn TIM3();
+    fn TIM4();
+    fn I2C1_EV_EXTI23();
+    fn I2C1_ER();
+    fn I2C2_EV_EXTI24();
+    fn I2C2_ER();
+    fn SPI1();
+    fn SPI2();
+    fn USART1_EXTI25();
+    fn USART2_EXTI26();
+    fn USART3_EXTI28();
+    fn EXTI15_10();
+    fn RTCALARM();
+    fn USB_WKUP();
+    fn TIM8_BRK();
+    fn TIM8_UP();
+    fn TIM8_TRG_COM();
+    fn TIM8_CC();
+    fn ADC3();
+    fn SPI3();
+    fn UART4_EXTI34();
+    fn UART5_EXTI35();
+    fn TIM6_DACUNDER();
+    fn TIM7();
+    fn DMA2_CH1();
+    fn DMA2_CH2();
+    fn DMA2_CH3();
+    fn DMA2_CH4();
+    fn DMA2_CH5();
+    fn ADC4();
+    fn COMP123();
+    fn COMP456();
+    fn COMP7();
+    fn USB_HP();
+    fn USB_LP();
+    fn USB_WKUP_EXTI();
+    fn FPU();
+}
+#[doc(hidden)]
+pub union Vector {
+    _handler: unsafe extern "C" fn(),
+    _reserved: u32,
+}
+#[cfg(feature = "rt")]
+#[doc(hidden)]
+#[link_section = ".vector_table.interrupts"]
+#[no_mangle]
+pub static __INTERRUPTS: [Vector; 82] = [
+    Vector { _handler: WWDG },
+    Vector { _handler: PVD },
+    Vector {
+        _handler: TAMP_STAMP,
+    },
+    Vector { _handler: RTC_WKUP },
+    Vector { _handler: FLASH },
+    Vector { _handler: RCC },
+    Vector { _handler: EXTI0 },
+    Vector { _handler: EXTI1 },
+    Vector {
+        _handler: EXTI2_TSC,
+    },
+    Vector { _handler: EXTI3 },
+    Vector { _handler: EXTI4 },
+    Vector { _handler: DMA1_CH1 },
+    Vector { _handler: DMA1_CH2 },
+    Vector { _handler: DMA1_CH3 },
+    Vector { _handler: DMA1_CH4 },
+    Vector { _handler: DMA1_CH5 },
+    Vector { _handler: DMA1_CH6 },
+    Vector { _handler: DMA1_CH7 },
+    Vector { _handler: ADC1_2 },
+    Vector {
+        _handler: USB_HP_CAN_TX,
+    },
+    Vector {
+        _handler: USB_LP_CAN_RX0,
+    },
+    Vector { _handler: CAN_RX1 },
+    Vector { _handler: CAN_SCE },
+    Vector { _handler: EXTI9_5 },
+    Vector {
+        _handler: TIM1_BRK_TIM15,
+    },
+    Vector {
+        _handler: TIM1_UP_TIM16,
+    },
+    Vector {
+        _handler: TIM1_TRG_COM_TIM17,
+    },
+    Vector { _handler: TIM1_CC },
+    Vector { _handler: TIM2 },
+    Vector { _handler: TIM3 },
+    Vector { _handler: TIM4 },
+    Vector {
+        _handler: I2C1_EV_EXTI23,
+    },
+    Vector { _handler: I2C1_ER },
+    Vector {
+        _handler: I2C2_EV_EXTI24,
+    },
+    Vector { _handler: I2C2_ER },
+    Vector { _handler: SPI1 },
+    Vector { _handler: SPI2 },
+    Vector {
+        _handler: USART1_EXTI25,
+    },
+    Vector {
+        _handler: USART2_EXTI26,
+    },
+    Vector {
+        _handler: USART3_EXTI28,
+    },
+    Vector {
+        _handler: EXTI15_10,
+    },
+    Vector { _handler: RTCALARM },
+    Vector { _handler: USB_WKUP },
+    Vector { _handler: TIM8_BRK },
+    Vector { _handler: TIM8_UP },
+    Vector {
+        _handler: TIM8_TRG_COM,
+    },
+    Vector { _handler: TIM8_CC },
+    Vector { _handler: ADC3 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _handler: SPI3 },
+    Vector {
+        _handler: UART4_EXTI34,
+    },
+    Vector {
+        _handler: UART5_EXTI35,
+    },
+    Vector {
+        _handler: TIM6_DACUNDER,
+    },
+    Vector { _handler: TIM7 },
+    Vector { _handler: DMA2_CH1 },
+    Vector { _handler: DMA2_CH2 },
+    Vector { _handler: DMA2_CH3 },
+    Vector { _handler: DMA2_CH4 },
+    Vector { _handler: DMA2_CH5 },
+    Vector { _handler: ADC4 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _handler: COMP123 },
+    Vector { _handler: COMP456 },
+    Vector { _handler: COMP7 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _handler: USB_HP },
+    Vector { _handler: USB_LP },
+    Vector {
+        _handler: USB_WKUP_EXTI,
+    },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _handler: FPU },
+];
+#[doc = r" Macro to override a device specific interrupt handler"]
+#[doc = r""]
+#[doc = r" # Syntax"]
+#[doc = r""]
+#[doc = r" ``` ignore"]
+#[doc = r" interrupt!("]
+#[doc = r"     // Name of the interrupt"]
+#[doc = r"     $Name:ident,"]
+#[doc = r""]
+#[doc = r"     // Path to the interrupt handler (a function)"]
+#[doc = r"     $handler:path,"]
+#[doc = r""]
+#[doc = r"     // Optional, state preserved across invocations of the handler"]
+#[doc = r"     state: $State:ty = $initial_state:expr,"]
+#[doc = r" );"]
+#[doc = r" ```"]
+#[doc = r""]
+#[doc = r" Where `$Name` must match the name of one of the variants of the `Interrupt`"]
+#[doc = r" enum."]
+#[doc = r""]
+#[doc = r" The handler must have signature `fn()` is no state was associated to it;"]
+#[doc = r" otherwise its signature must be `fn(&mut $State)`."]
+#[cfg(feature = "rt")]
+#[macro_export]
+macro_rules! interrupt {
+    ($Name:ident, $handler:path,state: $State:ty = $initial_state:expr) => {
+        #[allow(unsafe_code)]
+        #[deny(private_no_mangle_fns)]
+        #[no_mangle]
+        pub unsafe extern "C" fn $Name() {
+            static mut STATE: $State = $initial_state;
+            let _ = $crate::Interrupt::$Name;
+            let f: fn(&mut $State) = $handler;
+            f(&mut STATE)
+        }
+    };
+    ($Name:ident, $handler:path) => {
+        #[allow(unsafe_code)]
+        #[deny(private_no_mangle_fns)]
+        #[no_mangle]
+        pub unsafe extern "C" fn $Name() {
+            let _ = $crate::Interrupt::$Name;
+            let f: fn() = $handler;
+            f()
+        }
+    };
+}
+#[doc = r" Enumeration of all the interrupts"]
+pub enum Interrupt {
+    #[doc = "0 - Window Watchdog interrupt"]
+    WWDG,
+    #[doc = "1 - PVD through EXTI line detection interrupt"]
+    PVD,
+    #[doc = "2 - Tamper and TimeStamp interrupts"]
+    TAMP_STAMP,
+    #[doc = "3 - RTC Wakeup interrupt through the EXTI line"]
+    RTC_WKUP,
+    #[doc = "4 - Flash global interrupt"]
+    FLASH,
+    #[doc = "5 - RCC global interrupt"]
+    RCC,
+    #[doc = "6 - EXTI Line0 interrupt"]
+    EXTI0,
+    #[doc = "7 - EXTI Line3 interrupt"]
+    EXTI1,
+    #[doc = "8 - EXTI Line2 and Touch sensing interrupts"]
+    EXTI2_TSC,
+    #[doc = "9 - EXTI Line3 interrupt"]
+    EXTI3,
+    #[doc = "10 - EXTI Line4 interrupt"]
+    EXTI4,
+    #[doc = "11 - DMA1 channel 1 interrupt"]
+    DMA1_CH1,
+    #[doc = "12 - DMA1 channel 2 interrupt"]
+    DMA1_CH2,
+    #[doc = "13 - DMA1 channel 3 interrupt"]
+    DMA1_CH3,
+    #[doc = "14 - DMA1 channel 4 interrupt"]
+    DMA1_CH4,
+    #[doc = "15 - DMA1 channel 5 interrupt"]
+    DMA1_CH5,
+    #[doc = "16 - DMA1 channel 6 interrupt"]
+    DMA1_CH6,
+    #[doc = "17 - DMA1 channel 7interrupt"]
+    DMA1_CH7,
+    #[doc = "18 - ADC1 and ADC2 global interrupt"]
+    ADC1_2,
+    #[doc = "19 - USB High Priority/CAN_TX interrupts"]
+    USB_HP_CAN_TX,
+    #[doc = "20 - USB Low Priority/CAN_RX0 interrupts"]
+    USB_LP_CAN_RX0,
+    #[doc = "21 - CAN_RX1 interrupt"]
+    CAN_RX1,
+    #[doc = "22 - CAN_SCE interrupt"]
+    CAN_SCE,
+    #[doc = "23 - EXTI Line5 to Line9 interrupts"]
+    EXTI9_5,
+    #[doc = "24 - TIM1 Break/TIM15 global interruts"]
+    TIM1_BRK_TIM15,
+    #[doc = "25 - TIM1 Update/TIM16 global interrupts"]
+    TIM1_UP_TIM16,
+    #[doc = "26 - TIM1 trigger and commutation/TIM17 interrupts"]
+    TIM1_TRG_COM_TIM17,
+    #[doc = "27 - TIM1 capture compare interrupt"]
+    TIM1_CC,
+    #[doc = "28 - TIM2 global interrupt"]
+    TIM2,
+    #[doc = "29 - TIM3 global interrupt"]
+    TIM3,
+    #[doc = "30 - TIM4 global interrupt"]
+    TIM4,
+    #[doc = "31 - I2C1 event interrupt and EXTI Line23 interrupt"]
+    I2C1_EV_EXTI23,
+    #[doc = "32 - I2C1 error interrupt"]
+    I2C1_ER,
+    #[doc = "33 - I2C2 event interrupt & EXTI Line24 interrupt"]
+    I2C2_EV_EXTI24,
+    #[doc = "34 - I2C2 error interrupt"]
+    I2C2_ER,
+    #[doc = "35 - SPI1 global interrupt"]
+    SPI1,
+    #[doc = "36 - SPI2 global interrupt"]
+    SPI2,
+    #[doc = "37 - USART1 global interrupt and EXTI Line 25 interrupt"]
+    USART1_EXTI25,
+    #[doc = "38 - USART2 global interrupt and EXTI Line 26 interrupt"]
+    USART2_EXTI26,
+    #[doc = "39 - USART3 global interrupt and EXTI Line 28 interrupt"]
+    USART3_EXTI28,
+    #[doc = "40 - EXTI Line15 to Line10 interrupts"]
+    EXTI15_10,
+    #[doc = "41 - RTC alarm interrupt"]
+    RTCALARM,
+    #[doc = "42 - USB wakeup from Suspend"]
+    USB_WKUP,
+    #[doc = "43 - TIM8 break interrupt"]
+    TIM8_BRK,
+    #[doc = "44 - TIM8 update interrupt"]
+    TIM8_UP,
+    #[doc = "45 - TIM8 Trigger and commutation interrupts"]
+    TIM8_TRG_COM,
+    #[doc = "46 - TIM8 capture compare interrupt"]
+    TIM8_CC,
+    #[doc = "47 - ADC3 global interrupt"]
+    ADC3,
+    #[doc = "51 - SPI3 global interrupt"]
+    SPI3,
+    #[doc = "52 - UART4 global and EXTI Line 34 interrupts"]
+    UART4_EXTI34,
+    #[doc = "53 - UART5 global and EXTI Line 35 interrupts"]
+    UART5_EXTI35,
+    #[doc = "54 - TIM6 global and DAC12 underrun interrupts"]
+    TIM6_DACUNDER,
+    #[doc = "55 - TIM7 global interrupt"]
+    TIM7,
+    #[doc = "56 - DMA2 channel1 global interrupt"]
+    DMA2_CH1,
+    #[doc = "57 - DMA2 channel2 global interrupt"]
+    DMA2_CH2,
+    #[doc = "58 - DMA2 channel3 global interrupt"]
+    DMA2_CH3,
+    #[doc = "59 - DMA2 channel4 global interrupt"]
+    DMA2_CH4,
+    #[doc = "60 - DMA2 channel5 global interrupt"]
+    DMA2_CH5,
+    #[doc = "61 - ADC4 global interrupt"]
+    ADC4,
+    #[doc = "64 - COMP1 & COMP2 & COMP3 interrupts combined with EXTI Lines 21, 22 and 29 interrupts"]
+    COMP123,
+    #[doc = "65 - COMP4 & COMP5 & COMP6 interrupts combined with EXTI Lines 30, 31 and 32 interrupts"]
+    COMP456,
+    #[doc = "66 - COMP7 interrupt combined with EXTI Line 33 interrupt"]
+    COMP7,
+    #[doc = "74 - USB High priority interrupt"]
+    USB_HP,
+    #[doc = "75 - USB Low priority interrupt"]
+    USB_LP,
+    #[doc = "76 - USB wakeup from Suspend and EXTI Line 18"]
+    USB_WKUP_EXTI,
+    #[doc = "81 - Floating point interrupt"]
+    FPU,
+}
+unsafe impl ::bare_metal::Nr for Interrupt {
+    #[inline]
+    fn nr(&self) -> u8 {
+        match *self {
+            Interrupt::WWDG => 0,
+            Interrupt::PVD => 1,
+            Interrupt::TAMP_STAMP => 2,
+            Interrupt::RTC_WKUP => 3,
+            Interrupt::FLASH => 4,
+            Interrupt::RCC => 5,
+            Interrupt::EXTI0 => 6,
+            Interrupt::EXTI1 => 7,
+            Interrupt::EXTI2_TSC => 8,
+            Interrupt::EXTI3 => 9,
+            Interrupt::EXTI4 => 10,
+            Interrupt::DMA1_CH1 => 11,
+            Interrupt::DMA1_CH2 => 12,
+            Interrupt::DMA1_CH3 => 13,
+            Interrupt::DMA1_CH4 => 14,
+            Interrupt::DMA1_CH5 => 15,
+            Interrupt::DMA1_CH6 => 16,
+            Interrupt::DMA1_CH7 => 17,
+            Interrupt::ADC1_2 => 18,
+            Interrupt::USB_HP_CAN_TX => 19,
+            Interrupt::USB_LP_CAN_RX0 => 20,
+            Interrupt::CAN_RX1 => 21,
+            Interrupt::CAN_SCE => 22,
+            Interrupt::EXTI9_5 => 23,
+            Interrupt::TIM1_BRK_TIM15 => 24,
+            Interrupt::TIM1_UP_TIM16 => 25,
+            Interrupt::TIM1_TRG_COM_TIM17 => 26,
+            Interrupt::TIM1_CC => 27,
+            Interrupt::TIM2 => 28,
+            Interrupt::TIM3 => 29,
+            Interrupt::TIM4 => 30,
+            Interrupt::I2C1_EV_EXTI23 => 31,
+            Interrupt::I2C1_ER => 32,
+            Interrupt::I2C2_EV_EXTI24 => 33,
+            Interrupt::I2C2_ER => 34,
+            Interrupt::SPI1 => 35,
+            Interrupt::SPI2 => 36,
+            Interrupt::USART1_EXTI25 => 37,
+            Interrupt::USART2_EXTI26 => 38,
+            Interrupt::USART3_EXTI28 => 39,
+            Interrupt::EXTI15_10 => 40,
+            Interrupt::RTCALARM => 41,
+            Interrupt::USB_WKUP => 42,
+            Interrupt::TIM8_BRK => 43,
+            Interrupt::TIM8_UP => 44,
+            Interrupt::TIM8_TRG_COM => 45,
+            Interrupt::TIM8_CC => 46,
+            Interrupt::ADC3 => 47,
+            Interrupt::SPI3 => 51,
+            Interrupt::UART4_EXTI34 => 52,
+            Interrupt::UART5_EXTI35 => 53,
+            Interrupt::TIM6_DACUNDER => 54,
+            Interrupt::TIM7 => 55,
+            Interrupt::DMA2_CH1 => 56,
+            Interrupt::DMA2_CH2 => 57,
+            Interrupt::DMA2_CH3 => 58,
+            Interrupt::DMA2_CH4 => 59,
+            Interrupt::DMA2_CH5 => 60,
+            Interrupt::ADC4 => 61,
+            Interrupt::COMP123 => 64,
+            Interrupt::COMP456 => 65,
+            Interrupt::COMP7 => 66,
+            Interrupt::USB_HP => 74,
+            Interrupt::USB_LP => 75,
+            Interrupt::USB_WKUP_EXTI => 76,
+            Interrupt::FPU => 81,
+        }
+    }
+}
 #[doc(hidden)]
 pub mod interrupt;
 pub use cortex_m::peripheral::Peripherals as CorePeripherals;
-pub use cortex_m::peripheral::CPUID;
-pub use cortex_m::peripheral::DCB;
-pub use cortex_m::peripheral::DWT;
-pub use cortex_m::peripheral::MPU;
-pub use cortex_m::peripheral::NVIC;
-pub use cortex_m::peripheral::SCB;
-pub use cortex_m::peripheral::SYST;
+pub use cortex_m::peripheral::{CBP, CPUID, DCB, DWT, FPB, FPU, ITM, MPU, NVIC, SCB, SYST, TPIU};
 #[doc = "General-purpose I/Os"]
 pub struct GPIOA {
     _marker: PhantomData<*const ()>,
@@ -979,6 +1417,7 @@ impl Deref for OPAMP {
 }
 #[doc = "Operational amplifier"]
 pub mod opamp;
+#[allow(private_no_mangle_statics)]
 #[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r" All the peripherals"]
