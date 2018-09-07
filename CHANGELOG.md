@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [v0.7.1] - 2018-09-07
+
+### Added
+
+- Support for cortex-m-rt v0.6.x
+
 ## [v0.7.0] - 2018-05-12
 
 ### Changed
