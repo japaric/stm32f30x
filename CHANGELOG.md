@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [v0.8.0] - 2018-11-??
+
+### Changed
+
+- [breaking-change] re-generated using svd2rust v0.14.0. The `interrupt` macro
+  has become an attribute.
+
 ## [v0.7.1] - 2018-09-07
 
 ### Added
