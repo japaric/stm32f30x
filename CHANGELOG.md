@@ -5,7 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [v0.8.0] - 2018-11-??
+## [v0.8.0] - 2018-12-07
 
 ### Changed
 
@@ -117,7 +117,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Initial release
 
-[Unreleased]: https://github.com/japaric/stm32f30x/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/japaric/stm32f30x/compare/v0.8.0...HEAD
+[v0.8.0]: https://github.com/japaric/stm32f30x/compare/v0.7.1...v0.8.0
+[v0.7.1]: https://github.com/japaric/stm32f30x/compare/v0.7.0...v0.7.1
 [v0.7.0]: https://github.com/japaric/stm32f30x/compare/v0.6.2...v0.7.0
 [v0.6.2]: https://github.com/japaric/stm32f30x/compare/v0.6.1...v0.6.2
 [v0.6.1]: https://github.com/japaric/stm32f30x/compare/v0.6.0...v0.6.1
