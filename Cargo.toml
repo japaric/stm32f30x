@@ -7,11 +7,11 @@ keywords = ["arm", "cortex-m", "stm32", "svd2rust"]
 license = "MIT OR Apache-2.0"
 name = "stm32f30x"
 repository = "https://github.com/japaric/stm32f30x"
-version = "0.8.0"
+version = "0.9.0"
 
 [dependencies]
 bare-metal = "0.2.4"
-cortex-m = "0.5.8"
+cortex-m = "0.6.0"
 vcell = "0.1.0"
 
 [dependencies.cortex-m-rt]
